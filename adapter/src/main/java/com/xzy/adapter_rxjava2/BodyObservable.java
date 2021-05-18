@@ -67,7 +67,7 @@ final class BodyObservable<T> extends Observable<T> {
                 Throwable t = new HttpException(response);
                 try {
                     if (call != null) {
-                        MyNetThrowable myNetThrowable = new MyNetThrowable(t, call);
+                        NetThrowable myNetThrowable = new NetThrowable(t, call);
                         observer.onError(myNetThrowable);
                     } else {
                         observer.onError(t);
