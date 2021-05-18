@@ -61,11 +61,7 @@ final class BodyObservable<T> extends Observable<T> {
         @Override
         public void onNext(Response<R> response) {
             if (response.isSuccessful()) {
-                Object obj=response.body();
-                if(obj instanceof BaseResult){
-                    ((BaseResult) obj).setCall(call);
-                }
-                observer.onNext((R)obj);
+                observer.onNext(response.body());
             } else {
                 terminated = true;
                 Throwable t = new HttpException(response);
